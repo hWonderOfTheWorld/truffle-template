@@ -6,6 +6,7 @@ const fs = require('fs');
 //Make sure you have a .env
 const HDWalletProvider = require('@truffle/hdwallet-provider');
 const privateKeys = process.env.PRIVATE_KEY
+const infrakeys = process.env.INFURA_API_KEY
 
 module.exports = {
   contracts_directory: "./contracts",
@@ -19,7 +20,7 @@ module.exports = {
     main: {
       provider: () => new HDWalletProvider(
         privateKeys,
-        `https://mainnet.infura.io/v3/...`,
+        `https://mainnet.infura.io/v3/${infrakeys}`,
         0,
         10
       ),
@@ -37,7 +38,7 @@ module.exports = {
     testnet: {
        provider: () => new HDWalletProvider(
         privateKeys,
-        `https://ropsten.infura.io/v3/...`,
+        `https://ropsten.infura.io/v3/${infrakeys}`,
         0,
         10
       ),
